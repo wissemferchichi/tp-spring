@@ -1,5 +1,6 @@
 package com.tp.foyer.tp.spring.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,7 +25,16 @@ public class Foyer {
     private  int capaciteFoyer ;
 
     @OneToMany(mappedBy = "foyer", cascade = CascadeType.ALL )
+    @JsonManagedReference
     private Set<Bloc> blocs;
+
+
+
+@OneToOne(cascade = CascadeType.ALL)
+@JoinColumn(name = "bloc_id")
+private Bloc bloc;
+
+
 
 
 }

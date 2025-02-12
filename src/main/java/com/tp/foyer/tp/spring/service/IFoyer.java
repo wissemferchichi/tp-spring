@@ -4,7 +4,7 @@ import com.tp.foyer.tp.spring.Entity.Foyer;
 
 import java.util.List;
 
-public interface Ifoyer {
+public interface IFoyer {
 
     List<Foyer> findAll();
     Foyer findById(int id);
@@ -13,4 +13,9 @@ public interface Ifoyer {
 
     void delete(int id);
 
+    void delete(Foyer foyer);
+    Foyer addFoyerAndBlocAndAssign(Foyer foyer);
 }
+
+
+

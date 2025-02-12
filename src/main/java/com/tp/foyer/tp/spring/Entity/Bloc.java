@@ -1,10 +1,9 @@
 package com.tp.foyer.tp.spring.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
@@ -23,13 +22,17 @@ public class Bloc {
     private  int capaciteBloc ;
 
 
-    @ManyToOne
+   @ManyToOne
     @JoinColumn(name = "foyer_id", nullable = true)
+   @JsonBackReference
     private Foyer foyer;
 
 
 
-
+    @OneToOne(mappedBy = "bloc")
+    @ToString.Exclude
+    @JsonIgnore
+    private Foyer foyerUnique;
 
 
 

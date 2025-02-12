@@ -7,39 +7,54 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/bloc")
 public class BlocController {
-IBloc ibloc ;
+IBloc blocService ;
 
 
     @GetMapping("/index")
  public List<Bloc>  index() {
-     return ibloc.findAll() ;
+     return blocService.findAll() ;
 
  }
 
-    @PutMapping("/new")
-    public Bloc add(@RequestBody Bloc b   ) {
-        return ibloc.add(b);
+    @PostMapping("/new")
+    public Bloc add(@RequestBody Bloc bloc  ) {
+        Bloc blocA = blocService.add(bloc);
+        return blocA;
 
     }
-
-
-
 
     @PutMapping("/edit")
     public Bloc  edit( @RequestBody Bloc bloc) {
 
-        return ibloc.edit(bloc) ;
+        return blocService.edit(bloc) ;
 
     }
 
     @DeleteMapping("/delete")
     public void   delete(@RequestBody Bloc bloc) {
-          ibloc.delete(bloc) ;
+          blocService.delete(bloc) ;
     }
+
+
+
+
+
+
+
+
+
+    @DeleteMapping("/delete/{id}")
+    public void delete( @PathVariable("id") int id   ) {
+
+        blocService. delete(id);
+
+    }
+
 
 
 

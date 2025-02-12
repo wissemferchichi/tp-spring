@@ -10,9 +10,11 @@ public interface IBloc {
 
     List<Bloc> findAll();
     Bloc findById(int id);
-    Bloc add(Bloc b);
-    Bloc edit(Bloc b);
+    Bloc add(Bloc bloc);
+    Bloc edit(Bloc bloc);
 
-    void delete(Bloc b);
+
+    void delete(int id);
+    void delete(Bloc bloc);
 
 }

@@ -2,7 +2,7 @@ package com.tp.foyer.tp.spring.controller;
 
 
 import com.tp.foyer.tp.spring.Entity.Foyer;
-import com.tp.foyer.tp.spring.service.Ifoyer;
+import com.tp.foyer.tp.spring.service.IFoyer;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/foyer")
 public class FoyerController {
-Ifoyer foyerService ;
+IFoyer foyerService ;
 
 @GetMapping("/index")
     public List<Foyer> index(  ) {
@@ -44,18 +44,15 @@ Ifoyer foyerService ;
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delte( @PathVariable("id") int id   ) {
+    public void delete( @PathVariable("id") int id   ) {
 
            foyerService.delete(id);
 
     }
-
-
-
-
-
-
-
-
+    @PostMapping("/new-foyer-et-bloc")
+    public Foyer addFoyerAndBloc(@RequestBody Foyer b) {
+         Foyer foyer = foyerService.addFoyerAndBlocAndAssign(b);
+        return foyer;
+    }
 
 }
